@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+/**
+ * main -  prints all arguments without ac
+ * @av: NULL terminated array of strings
+ * @ac: number of items in av
+ * Return: Nothing
+ */
+
 int main(int ac, char **av)
 {
 	char *arg;
@@ -9,5 +16,5 @@ int main(int ac, char **av)
 		printf("%s\n", arg);
 	}
 
-	return 0;
+	return (0);
 }

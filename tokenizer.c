@@ -30,17 +30,17 @@ char **token(char *buff, const char *ds)
 	}
 
 	tok = strtok(buff, ds);
-	while (token != NULL)
+	while (tok != NULL)
 	{
-		cnd[i] = _strdup(tok);
+		cnd[i] = strdup(tok);
 		if (cnd[i] == NULL)
 		{
 			perror("Unable to allocate buuffer");
-			free_d(cnd);
+			free_dp(cnd);
 			return (NULL);
 		}
 		tok = strtok(NULL, ds);
 		i++;
 	cnd[i] = NULL;
 	return (cnd);
-}
+	}

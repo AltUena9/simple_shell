@@ -20,14 +20,14 @@ int main(int ac, char **av, char **env)
 		disp();
 		round++;
 		signal(SIGINT, handler);
-		leng = getline(&buff, &leng, stdin);
+		leng = getline(&buff, &buff_siz, stdin);
 		if (leng == EOF)
 			exit_shell(buff);
 		else if (*buff == '\n')
 			free(buff);
 		else
 		{
-			line[_strlen(buff) - 1] = '\0';
+			buff[_strlen(buff) - 1] = '\0';
 			args = token(buff, "\0");
 			free(buff);
 			if (_strcmp(args[0], "exit") != 0)
@@ -52,7 +52,7 @@ int main(int ac, char **av, char **env)
 void disp(void)
 {
 	if (isatty(STDIN_FILENO))
-		write(STDOUT_FIENO, "Angel$_Shell$", 13);
+		write(STDOUT_FILENO, "Angel$_Shell$", 13);
 }
 
 /**
@@ -73,8 +73,6 @@ void handler(int sig)
  */
 void exit_shell(char **args)
 {
-	int pos = 0;
-
 	if (args)
 	{
 		free(args);

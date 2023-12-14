@@ -15,7 +15,7 @@ void exec(char **env,  char **cnd, char *sh, int round)
 
 	if (_strcmp(cnd[0], "env") != 0)
 		print_env(env);
-	paths  _getPATH(env);
+	paths = _getPATH(env);
 
 	for (unsigned int i = 0; paths[i]; i++)
 	{
@@ -37,7 +37,7 @@ void exec(char **env,  char **cnd, char *sh, int round)
 		perror(sh);
 		free_exit(cnd);
 	}
-	msgerror(sh, round, cnd);
+	msgerr(sh, round, cnd);
 	free_dp(paths);
 }
 
@@ -48,7 +48,7 @@ void exec(char **env,  char **cnd, char *sh, int round)
  */
 void print_env(char **env)
 {
-	for (size i = 0; env[i]; i++)
+	for (size_t i = 0; env[i]; i++)
 	{
 		size_t len = _strlen(env[i]);
 
@@ -74,7 +74,7 @@ char **_getPATH(char **env)
 		if (_strcmp(pathv, "PATH"))
 		{
 			pathv = strtok(NULL, "\n");
-			paths = tokening(pathv, ":");
+			paths = token(pathv, ":");
 			break;
 		}
 	}
